@@ -1,5 +1,18 @@
 # Mémo
 
+## Tables des matières
+
+- [Java](#Java)
+- [Git](#Git)
+- [Apache](#Apache)
+- [Maven](#Maven)
+- [Architecture](#Architecture)
+- [Déploiement](#Deploiement)
+- [SQL](#SQL)
+- [Docker](#Docker)
+- [JavaScript](#JavaScript)
+- [Bash](#Bash)
+
 ## Java
 
 ### Configuration
@@ -107,7 +120,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:313)
 	...
 	```
- alors le problème vient d'un objet `null` lors d'une insertion dans une balise XML car la transformation exécute cette méthode (qui explique le nullpointer) :
+	alors le problème vient d'un objet `null` lors d'une insertion dans une balise XML car la transformation exécute cette méthode (qui explique le nullpointer) :
 
 	```java
 	public void characters(String chars) throws SAXException {
@@ -137,6 +150,8 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 - si une erreur de ce type se présente ``Caused by: org.hibernate.PersistentObjectException: detached entity passed to persist`` c'est qu'un objet (lié le plus souvent) que l'on essaye de persister en cascade n'est pas attaché à la session hibernate. Pour palier au problème, il faut d'abord récupérer cet objet via hibernate et le problème devrait disparaitre. 
 
+### Spring
+
 ## Git
 
 - pour supprimer un fichier sur le repository mais le garder en local (penser à l'ajouter dans le `.gitignore` ensuite) : 
@@ -158,7 +173,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ## Déploiement
 
-- Outil pour déployer son environnement local sur une url publique (Blog netapsys)[https://blog.netapsys.fr/exposer-son-environnement-local-rapidement-avec-ngrok/]
+- Outil pour déployer son environnement local sur une url publique [Blog netapsys](https://blog.netapsys.fr/exposer-son-environnement-local-rapidement-avec-ngrok/)
 
 ## SQL
 
@@ -204,6 +219,8 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ## Javascript
 
+### Langage
+
 - pour vérifier qu'un objet n'est pas null, undefined, ou vide il suffit de faire un simple if, si il est une de ces trois conditions, on aura `false` sinon on aura `true`
 
 	```javascript
@@ -225,6 +242,12 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	    alert('Je suis ne suis pas vide');
 	}
 	```
+
+### AngularJS
+
+#### Liens utiles
+
+- [guidelines Jon Papa](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
 
 ## Bash
 
