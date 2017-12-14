@@ -64,7 +64,6 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	        setEmail.accept(contact.getEmail());
 	    }
 	}
-	
 	```
 
 ### Talend
@@ -167,6 +166,32 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ## Apache
 
+- configuration Apache 2.4 pour ajouter un virtual host :
+
+	<VirtualHost *:80>
+	    ServerAdmin webmaster@localhost
+	    ServerName localhost
+	    ServerAlias localhost
+	    ProxyPreserveHost On
+	    ProxyRequests Off
+	    ProxyVia off
+	    AcceptPathInfo On
+	    RewriteEngine On
+	    
+	    Options FollowSymLinks
+	    ProxyPass /api http://localhost:8080/api
+	    ProxyPassReverse /api http://localhost:8080/api
+	    
+	    ProxyPass / http://localhost:8888/
+	    ProxyPassReverse / http://localhost:8888/
+	    
+	    ErrorLog logs/arcania-error.log
+		# Possible values include: debug, info, notice, warn, error, crit,
+		# alert, emerg.
+		LogLevel error
+		CustomLog logs/arcania-access.log combined
+	</VirtualHost>
+
 ## Maven
 
 ## Architecture
@@ -177,7 +202,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ## SQL
 
-- pour faire un update sur une sélection de lignes et non pas sur toute la table
+- pour faire un `update` sur une sélection de lignes et non pas sur toute la table :
 
 	```sql
 	UPDATE contact_sites AS cs 
@@ -185,6 +210,15 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	FROM sites AS s
 	WHERE cs.id_site = s.id and s.id_etablissement IS NOT null;
 	```
+
+- pour faire un `insert` dans une table sur une sélection d'éléments :
+
+	```sql
+	INSERT INTO table1 (column1, column2, someInt, someVarChar)
+	SELECT table2.column1, table2.column2, 8, 'some string etc.'
+	FROM table2
+	WHERE table2.ID = 7;
+	```	
 
 ### Postgre SQL
 
@@ -259,23 +293,28 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	```bash
 	alias ll='ls -l'
 	```
+
 - variable d'environnement :
 
 	```bash
 	# JAVA HOME PATH
 	export JAVA_HOME=$TOOLS_DEV/Java/Contents/Home
 	```
+
 - path complet :
 
 	```bash
 	# FINAL PATH
 	export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$MYSQL/bin:$SONAR_RUNNER_HOME/bin
 	```
+
 - faire un lien symbolique
 
 	```bash
 	ln -s origine destination
 	```
+
+- pour ajouter un nouvel utilisateur en tant que sudoer `sudo adduser <username> sudo` ou modifier le fichier `/etc/sudoer` en ajoutant une ligne `user ALL=(ALL) ALL`
 
 ### Configuration OSX
 
