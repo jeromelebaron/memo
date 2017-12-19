@@ -148,6 +148,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 ### Hibernate/JPA
 
 - si une erreur de ce type se présente ``Caused by: org.hibernate.PersistentObjectException: detached entity passed to persist`` c'est qu'un objet (lié le plus souvent) que l'on essaye de persister en cascade n'est pas attaché à la session hibernate. Pour palier au problème, il faut d'abord récupérer cet objet via hibernate et le problème devrait disparaitre. 
+- attention lorsqu'on passe une liste pour un paramètre de type IN écrite en HQL, si la liste est vide alors cela va créer une erreur de syntaxe à cause de la parenthèse. Pour pallier le problème, il faut ajouter une valeur dans la liste.
 
 ### Spring
 
@@ -250,6 +251,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 ## Docker
 
 - sur windows attention à la configuration des volumes docker qui sont généralement sur le disque d'installation. Pour pouvoir changer l'emplacement, il faut passer par le gestionnaire Hyper-V de windows.
+- pour démarrer un container il faut lancer la ligne de commande suivante `docker-compose -f openldap.yml up -d`
 
 ## Javascript
 
@@ -315,6 +317,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	```
 
 - pour ajouter un nouvel utilisateur en tant que sudoer `sudo adduser <username> sudo` ou modifier le fichier `/etc/sudoer` en ajoutant une ligne `user ALL=(ALL) ALL`
+- pour savoir ou on se trouve : `pwd`
 
 ### Configuration OSX
 
