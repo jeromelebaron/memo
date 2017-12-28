@@ -27,6 +27,10 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ### Java
 
+#### Liens utiles
+
+- [Design patterns](http://java-design-patterns.com/)
+
 #### Lambda
 
 - pour l'utilisation des lambdas de type `Consumer<T>` (équivalent du setter) il faut utiliser l'instance avec `::`. `objet::setter`
@@ -283,7 +287,80 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 #### Liens utiles
 
-- [guidelines Jon Papa](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
+- [guidelines Jon Papa](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
+
+#### Directives
+
+- les différents éléments courants de configuration sont les suivants :
+
+```javascript
+(function() {
+    'use strict';
+
+    angular
+        .module('core')
+        .directive('inscriptionCampagne', inscriptionCampagne);
+
+    /* @ngInject */
+    function inscriptionCampagne() {
+        return {
+            scope: {
+            },
+            bindToController: {
+                contactsSelectionnes: '='
+            },
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'app/core/templates/inscriptionCampagne.tpl.html',
+            controller: function (blockUI, notificationService, AutocompleteService, CampagneEditionService) {
+
+                var vm = this;
+                // Attributs publics
+                vm.nomCampagne = '';
+                vm.campagne = null;
+                // Méthodes publiques
+                vm.autocompleteCampagne = autocompleteCampagne;
+                vm.inscrireAUneCampagne = inscrireAUneCampagne;
+
+                /** Pour l'auto-complétion de la campagne. */
+                function autocompleteCampagne(query) {
+                    return AutocompleteService.autocompleteCampagne(query).then(function (response) {
+                        return response;
+                    });
+                }
+
+                /** Pour inscrire une liste de contact à une campagne. */
+                function inscrireAUneCampagne() {
+                    blockUI.start();
+                    CampagneEditionService.copierVersCampagne(vm.campagne.id, vm.contactsSelectionnes).then(function () {
+                        notificationService.success('message.succes.campagne.inscrire');
+                    }).finally(function () {
+                        blockUI.stop();
+                    });
+                }
+            },
+            controllerAs: 'vm'
+        };
+
+    }
+})();
+```
+
+- le nom de la directive en camelCase sera transformé avec des tirets; ici `inscriptionCampagne` devient `inscription-campagne` (il en est de même pour les paramètres)
+- soit on utilise `scope` soit `bindToController` pour le passage de paramètre sachant que `bindToController` est conseillé
+- restrict est la façon dont on va utiliser la directive dans le code, la plus simple étant `'E'` je trouve pour passer des paramètres
+- au niveau des paramètres, il y a trois possibilités et une chose à savoir :
+	- `'@'` qui passe la valeur comme une chaine de caractères (utile pour les libellés, les id, les class ...)
+	- `'='` qui passe un objet avec le binding habituel angular
+	- `'&'` qui permet de passer une fonction
+	- si on ne suffixe pas le type alors le nom à utiliser au moment de la déclaration sera le même, si on veut modifier cette valeur il suffit de faire comme suivant :
+		
+		```javascript
+		bindToController: {
+            contactsSelectionnes: '=contactsAAfficher'
+        },
+		```
+		On utilisera donc le paramètre de la façon suivante : `contacts-a-afficher="..."`
 
 ## Bash
 
@@ -322,3 +399,33 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 ### Configuration OSX
 
 - ne plus prend en compte la casse pour l'auto-complétion dans le terminal : add `'set completion-ignore-case on'` to `~/.inputrc` (create file if necessary) to make bash tab-completion case-insensitive, like the Mac file systems (HFS+ and APFS)
+
+## CSS/SCSS
+
+- pour factoriser un pattern il faut utiliser les `@mixin`, exemple :
+
+```scss
+@mixin habillage-tableau($top-color, $color, $hover-color) {
+    > thead {
+        border-top-color: $top-color;
+    }
+    > tbody {
+        > tr {
+            > td.picto {
+                i {
+                    color: $color;
+                    &:hover {
+                        color: $hover-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+table.table {
+    &.bleu {
+        @include habillage-tableau($bleu, $bleu, $bleuActive);
+    }
+}
+```
