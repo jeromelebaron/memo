@@ -349,6 +349,10 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 - le nom de la directive en camelCase sera transformé avec des tirets; ici `inscriptionCampagne` devient `inscription-campagne` (il en est de même pour les paramètres)
 - soit on utilise `scope` soit `bindToController` pour le passage de paramètre sachant que `bindToController` est conseillé
 - restrict est la façon dont on va utiliser la directive dans le code, la plus simple étant `'E'` je trouve pour passer des paramètres
+	- `'E'` pour element `<my-loading title="Paramètres">...</my-loading>` 
+	- `'A'` pour attribut `<div my-loading="Paramètres">...</div>` 
+	- `'C'` pour classe `<div class="my-loading:Paramètres">...</div>` 
+	- `'M'` pour commentaires  `<!-- directive: my-loading Paramètres -->`
 - au niveau des paramètres, il y a trois possibilités et une chose à savoir :
 	- `'@'` qui passe la valeur comme une chaine de caractères (utile pour les libellés, les id, les class ...)
 	- `'='` qui passe un objet avec le binding habituel angular
