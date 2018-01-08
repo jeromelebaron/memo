@@ -174,29 +174,29 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 - configuration Apache 2.4 pour ajouter un virtual host :
 
-	<VirtualHost *:80>
-	    ServerAdmin webmaster@localhost
-	    ServerName localhost
-	    ServerAlias localhost
-	    ProxyPreserveHost On
-	    ProxyRequests Off
-	    ProxyVia off
-	    AcceptPathInfo On
-	    RewriteEngine On
-	    
-	    Options FollowSymLinks
-	    ProxyPass /api http://localhost:8080/api
-	    ProxyPassReverse /api http://localhost:8080/api
-	    
-	    ProxyPass / http://localhost:8888/
-	    ProxyPassReverse / http://localhost:8888/
-	    
-	    ErrorLog logs/arcania-error.log
-		# Possible values include: debug, info, notice, warn, error, crit,
-		# alert, emerg.
-		LogLevel error
-		CustomLog logs/arcania-access.log combined
-	</VirtualHost>
+		<VirtualHost *:80>
+   	 		ServerAdmin webmaster@localhost
+    		ServerName localhost
+    		ServerAlias localhost
+    		ProxyPreserveHost On
+    		ProxyRequests Off
+    		ProxyVia off
+    		AcceptPathInfo On
+    		RewriteEngine On
+    
+			Options FollowSymLinks
+    		ProxyPass /api http://localhost:8080/api
+    		ProxyPassReverse /api http://localhost:8080/api
+    
+    		ProxyPass / http://localhost:8888/
+    		ProxyPassReverse / http://localhost:8888/
+    
+    		ErrorLog logs/arcania-error.log
+			# Possible values include: debug, info, notice, warn, error, grit,
+			# alert, emerge.
+			LogLevel error
+			CustomLog logs/arcania-access.log combined
+		</VirtualHost>
 
 ## Maven
 
@@ -289,6 +289,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 #### Liens utiles
 
 - [guidelines Jon Papa](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
+- [Tutoriel Grafikart](https://www.youtube.com/watch?v=cEJ7NVXCYsU&t=1943s)
 
 #### Directives
 
