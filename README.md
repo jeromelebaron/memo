@@ -69,6 +69,20 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	    }
 	}
 	```
+- les lambda permettent de facilement faire des concaténations de chaines. Par exemple lorsqu'on a une liste d'éléments et que l'on veut les concaténer avec une délimiteur :
+	
+	```java
+	List<String> tutorialList = Arrays.asList("Spring MVC", "Java", "NodeJS", "C Sharp");
+	// On utilise un stream puis le collector avec la méthode joining 
+	String tutorials = tutorialList.stream().map(crunchy -> crunchy).collect(Collectors.joining(", "));
+	// Le résultat est le suivant : Spring MVC, Java, NodeJS, C Sharp
+	```
+	Ce qui est intéressant c'est que le dernier élément n'aura pas le délimiteur. On peut aussi utiliser une autre méthode (qui aura le même effet):
+	
+	```java
+	String tutorials2 = String.join(", ", tutorialList);
+	```
+	Ce qui est intéressant avec le stream c'est que si c'est une liste d'objets on peut accéder aux propriétés avec `crunchy -> crunchy.getName()`.
 
 ### Talend
 
@@ -252,6 +266,17 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	FROM dossiers
 	WHERE formation ->> 'suiviParticulier' = 'true';
 	```
+- pour ajouter un champ json à un colonne existante il faut écrire un script comme ceci :
+
+	```sql
+	-- Ajout des nouvelles données naf du bloc employeur du cerfa pour un code naf en correspondance
+UPDATE contrats c
+SET employeur = employeur || jsonb_build_object('naf', json_build_object('id', r.id, 'code', r.code, 'libelle', r.libelle))
+FROM referentiels r
+WHERE c.employeur ->> 'codeNaf' = r.code
+AND r.type = 'NAF';
+	```
+	Les `||` permettent de dire qu'il faut concaténer avec les éléments existants et ne pas remplacer. La fonction `jsonb_build_object(clé, valeur)` permet facilement de construire la paire clé/valeur avec en première valeur la clé et ensuite après une virgule la valeur et ainsi de suite pour autant de champs que désiré.
 
 ## Docker
 
@@ -367,6 +392,14 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
         },
 		```
 		On utilisera donc le paramètre de la façon suivante : `contacts-a-afficher="..."`
+
+### Angular 4
+
+- pour faire une conversion de `string` en `number` il suffit simplement de préfixer la variable `string` par `+`
+	
+	```javascript
+	const id = +this.route.snapshot.paramMap.get('id');
+	``` 
 
 ## Bash
 
