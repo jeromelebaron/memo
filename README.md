@@ -184,6 +184,24 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	git commit -am "Mon texte de commit"
 	```
 
+- en cas d'erreur de type `error: bad signature fatal: index file corrupt`, c'est seulement l'index qui est corrompu. Il faut faire les commande suivantes :
+
+	```bash
+	rm -f .git/index
+	git reset
+	```
+
+- en cas d'erreur de type `error: inflate: data stream error (unknown compression method)` il faut faire les manipulations suivantes :
+	- sauvegarder le fichier `.git`
+	- faire la commande suivante `git fsck --full`
+	- ensuite il va afficher le fichier corrompu
+	- on le supprime avec la commande `rm -f .git/objects/56/d6c280ec4a5c91f442a23e6de7d8b425fb4623`
+	- puis on répète l'opération jusqu'à ce que `git fsck --full` fonctionne
+	- ensuite on récupère le nom des fichiers corrompus `git fsck --name-objects`
+	- on les sauvegarde
+	- on reset avec le remote `git reset --hard origin/votre-branche`
+	- on copie colle à la main les nouveaux fichiers
+
 ## Apache
 
 - configuration Apache 2.4 pour ajouter un virtual host :
@@ -256,12 +274,14 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 	pg_dump --host localhost --port 5432 --username "arcane" --role "arcane" --no-password  --format plain --data-only --encoding UTF8 --verbose --file "D:\Projets\Arcania\Sprints\arcania-local-liquibase-201711271701.backup" --table "public.databasechangelog" --table "public.databasechangeloglock" "arcane"
 	```
 
+- pour pouvoir un drop des table avant le backup il suffit d'ajouter l'option ``-c`` à une commande
+
 #### JSON
 
 - postgreSQL permet d'avoir des champs json, voici la manière de faire des requêtes :
 
 	```sql
-	-- Ici on vérifie que la propriété suiviParticulier à la valeur false dans la colonne son formation
+	-- Ici on vérifie que la propriété suiviParticulier à la valeur false dans la colonne json formation
 	SELECT *
 	FROM dossiers
 	WHERE formation ->> 'suiviParticulier' = 'true';
@@ -277,6 +297,11 @@ WHERE c.employeur ->> 'codeNaf' = r.code
 AND r.type = 'NAF';
 	```
 	Les `||` permettent de dire qu'il faut concaténer avec les éléments existants et ne pas remplacer. La fonction `jsonb_build_object(clé, valeur)` permet facilement de construire la paire clé/valeur avec en première valeur la clé et ensuite après une virgule la valeur et ainsi de suite pour autant de champs que désiré.
+
+- pour renommer un champ json le plus simple est de créer un nouveau champ puis de supprimer l'ancien :
+
+	```sql
+	```
 
 ## Docker
 
