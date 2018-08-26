@@ -193,6 +193,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 - `git checkout -b` pour créer une branche et se positionner dessus
 - `git branch -f master 151fv2drb` pour forcer la branche master à se positionner sur le commit indiqué
+- `git branch bugWork master^^2^` permet de créer une branche `bugwork` depuis dans l'ordre : `master` en remontant au commit précèdent, puis en remontant au 2ème commit parent et en remontant au commit précédent
 
 ### Checkout
 
@@ -203,6 +204,12 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 - `git reset knb1F` pour reset **en local** le commit indiqué
 - `git revert nk351efs` pour revert **de manière distante** le commit indiqué
+
+### Rebase
+
+- `git rebase branch` permet d'ajouter les commits sur la branche sur laquelle on se trouve à la suite de ceux de `branch`
+- `git rebase -i branch` permet d'ajouter les commits sur la branche sur laquelle on se trouve de manière interactive en modifiant par exemple l'ordre des commits
+- `git rebase master bugFix` permet de rebase `bugFix` sur `master`
 
 ## Apache
 
