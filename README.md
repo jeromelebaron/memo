@@ -173,6 +173,8 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ## Git
 
+Il ne faut pas oublier que tout ce qui a été cmomité dans git peut être retrouvé. Dans le doute, plutôt que de revenir à un fichier sur lequel on aurait fait une erreur, il vaut mieux créer une branche locale avec le fichier en question et faire un commit. Comme ça on pourra toujours retrouver la modification.
+
 ### Configuration
 
 - `git rm --cached -r somefile.ext` pour supprimer un fichier sur le repository mais le garder en local (penser à l'ajouter dans le `.gitignore` ensuite) 
@@ -194,6 +196,9 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 - `git checkout -b` pour créer une branche et se positionner dessus
 - `git branch -f master 151fv2drb` pour forcer la branche master à se positionner sur le commit indiqué
 - `git branch bugWork master^^2^` permet de créer une branche `bugwork` depuis dans l'ordre : `master` en remontant au commit précèdent, puis en remontant au 2ème commit parent et en remontant au commit précédent
+- `git branch -d bugWork` permet de supprimer la branche `bugWork`. On peut aussi le faire avec la commande `git push :bugWork`
+- `git branch --merged` show the branches that you are on and theses that have been merged
+- `git branch --no-merged` show the branches that have not been merged with the one you are on
 
 ### Checkout
 
@@ -210,6 +215,36 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 - `git rebase branch` permet d'ajouter les commits sur la branche sur laquelle on se trouve à la suite de ceux de `branch`
 - `git rebase -i branch` permet d'ajouter les commits sur la branche sur laquelle on se trouve de manière interactive en modifiant par exemple l'ordre des commits
 - `git rebase master bugFix` permet de rebase `bugFix` sur `master`
+
+### Push
+
+- `git push origin master` permet de pousser sur la branche `master` du repository l'état actuel de la branche `master`.  C'est en fait un raccourci de la commande `git push origin master:master`
+- `git push origin foo:master` permet de pousser sur la branche `master` l'état actuel de la branche `foo`
+- `git push origin --delete foo` will delete the `foo` branch from the remote repository `origin`
+
+### Log
+
+- `git log -p` pour avoir la liste des changements dans les logs
+- `git log -2` pour avoir les logs des deux derniers commits seulement
+- `git log --pretty` permet en passant des arguments de changer le formatage de la sortie
+- `git log --pretty=format: "xxx"` permet de formatter avec une customisation complète. Il suffit de regarder la doc pour savoir quels arguments utiliser.
+- `git log --graph` est une option intéressante qui permet d'afficher le graphe des actions. L'idéal est de la combiner avec une option de formatage sinon cela devient compliqué à lire
+- `git log --no-merges` permet de retirer les commits de merge qui peuvent polluer l'historique
+
+### Fetch
+
+- `git fetch` fait seulement un rapatriement des branches distantes dans le repository local. Il ne fait pas du tout de `merge`.
+
+### Tag
+
+- `git tag` permet d'afficher tous les tags
+- `git tag v1.4` permet de créer un tag v1.4
+- `git tag -a v1.3 5d1210d` permet d'ajouter un tag à postériori pour le hash d'un commit donné
+- `git push origin --tags` par défaut les tags ne sont pas poussés, cette commande permet de tous les pousser
+
+## Merge
+
+- `git merge iss53` will merge the `iss53` branch on the one you are on
 
 ## Apache
 
