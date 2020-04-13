@@ -171,7 +171,45 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ### Spring
 
-## Git
+#### Principales annotations
+
+##### Configuration
+
+- `@PropertySource` : Indicates the location of `application.properties` file to add key-value pairs to Spring Environment
+
+##### Bean properties
+
+- `@Lazy` : Annotated bean will be lazily initialized on the first usage
+- `@Profile` : Indicates that beans will be only initialized if the defined profiles are active 
+
+##### Springboot tests
+
+- `@SpringBootTest` : Annotated test class will load the entire application context for integration tests
+- `@WebMvcTest` : Annotated test class will load only the web layer (service and data layer are ignored)
+- `@DataJpaTest` : Annotated class will load only the JPA components
+
+##### Spring tests
+
+- `@ContextConfiguration` : Defines @Configuration to load application context for integration test
+- `@ExtendWith` : Defines extensions to execute the tests with, e.g. MockitoExtension
+- `@SpringJUnitConfig` : Combines @ContextConfiguration and @ExtendWith(SpringExtension.class)
+- `@TestPropertySource` : Defines the location of property files used in integration tests
+- `@DirtiesContext` : Indicates that annotated tests dirty the application context and will be cleaned after each test
+- `@ActiveProfiles` : Defines which active bean definition should be loaded when initializing the test application context
+- `@Sql` : Allows defining SQL scripts and statements to be executed before and after tests
+
+##### Spring security
+
+- `@EnableWebSecurity`: Enables web security
+- `@EnableGlobalMethodSecurity`: Enables method security
+- `@PreAuthorize`: Defines access-control expression using SpEL, which is evaluated before invoking a protected method
+- `@PostAuthorize`: Defines access-control expression using SpEL, which is evaluated after invoking a protected method
+- `@RolesAllowed`: Specifies a list of security roles allowed to invoke protected method
+- `@Secured`: Java 5 annotation for defining method level security
+
+- [ressource](https://dzone.com/articles/frequently-used-annotations-in-spring-boot-applica)
+
+## Git)
 
 Il ne faut pas oublier que tout ce qui a été cmomité dans git peut être retrouvé. Dans le doute, plutôt que de revenir à un fichier sur lequel on aurait fait une erreur, il vaut mieux créer une branche locale avec le fichier en question et faire un commit. Comme ça on pourra toujours retrouver la modification.
 
