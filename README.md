@@ -463,6 +463,13 @@ AND r.type = 'NAF';
 	const id = +this.route.snapshot.paramMap.get('id');
 	``` 
 
+### Documentation
+
+- [guide console](https://css-tricks.com/a-guide-to-console-commands/?utm_source=Iterable&utm_medium=email&utm_campaign=the_overflow_newsletter&utm_content=03-04-20)
+- [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [guides](https://css-tricks.com/guides/)
+
+
 ## Bash
 
 ### Configuration UNIX
