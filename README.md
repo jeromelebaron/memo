@@ -284,7 +284,19 @@ Il ne faut pas oublier que tout ce qui a été cmomité dans git peut être retr
 
 - `git merge iss53` will merge the `iss53` branch on the one you are on
 
-## Apache
+## Repo distant difficilement accessible
+
+Il peut arriver que le repo distant soit difficile d'accès (pour cause de problème internet ou de raison de sécurité). On peut dans ce cas utiliser les bundle git pour mettre à jour les éléments par lot (lien)[https://blog.engineering.publicissapient.fr/2020/04/14/comment-garder-son-projet-a-jour-quand-le-depot-git-est-inaccessible/].  
+Voici les différentes commandes utiles
+
+- `git rev-parse HEAD` pour récupérer le hash du commit
+- on clone le projet
+- `git bundle create master.bundle efb259382f547f5c4988441b5e069ea98787656c..HEAD` on créé ensuite un bundle avec la différence entre notre position (hash de commit) et master
+- `git pull ~/Downloads/master.bundle` après avoir récupéré le bundle on lance cette commande pour faire comme un pull classique
+- `git bundle create my-feature.bundle master..HEAD` on fait ensuite la même opération pour avoir la différence en notre branche et master
+- `git pull ~/Downloads/my-feature.patch` pour finir on va faire la même opération sur le repo distant et ensuite pousser normalement
+
+## Apache)
 
 - configuration Apache 2.4 pour ajouter un virtual host :
 
