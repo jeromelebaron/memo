@@ -587,3 +587,11 @@ table.table {
     }
 }
 ```
+
+## Craftman
+
+- [12 factor](https://12factor.net/fr/)
+
+## Tools
+
+- [diagramme](https://app.diagrams.net/)
