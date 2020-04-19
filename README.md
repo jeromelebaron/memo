@@ -211,7 +211,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 ## Git)
 
-Il ne faut pas oublier que tout ce qui a été cmomité dans git peut être retrouvé. Dans le doute, plutôt que de revenir à un fichier sur lequel on aurait fait une erreur, il vaut mieux créer une branche locale avec le fichier en question et faire un commit. Comme ça on pourra toujours retrouver la modification.
+Il ne faut pas oublier que tout ce qui a été commité dans git peut être retrouvé. Dans le doute, plutôt que de revenir à un fichier sur lequel on aurait fait une erreur, il vaut mieux créer une branche locale avec le fichier en question et faire un commit. Comme ça on pourra toujours retrouver la modification.
 
 ### Configuration
 
@@ -280,11 +280,11 @@ Il ne faut pas oublier que tout ce qui a été cmomité dans git peut être retr
 - `git tag -a v1.3 5d1210d` permet d'ajouter un tag à postériori pour le hash d'un commit donné
 - `git push origin --tags` par défaut les tags ne sont pas poussés, cette commande permet de tous les pousser
 
-## Merge
+### Merge
 
 - `git merge iss53` will merge the `iss53` branch on the one you are on
 
-## Repo distant difficilement accessible
+### Repo distant difficilement accessible
 
 Il peut arriver que le repo distant soit difficile d'accès (pour cause de problème internet ou de raison de sécurité). On peut dans ce cas utiliser les bundle git pour mettre à jour les éléments par lot (lien)[https://blog.engineering.publicissapient.fr/2020/04/14/comment-garder-son-projet-a-jour-quand-le-depot-git-est-inaccessible/].  
 Voici les différentes commandes utiles
@@ -295,6 +295,10 @@ Voici les différentes commandes utiles
 - `git pull ~/Downloads/master.bundle` après avoir récupéré le bundle on lance cette commande pour faire comme un pull classique
 - `git bundle create my-feature.bundle master..HEAD` on fait ensuite la même opération pour avoir la différence en notre branche et master
 - `git pull ~/Downloads/my-feature.patch` pour finir on va faire la même opération sur le repo distant et ensuite pousser normalement
+
+### Ressources
+
+- [explication visuelle des principales commandes](https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1)
 
 ## Apache)
 
