@@ -355,8 +355,9 @@ Voici les différentes commandes utiles
 	FROM table2
 	WHERE table2.ID = 7;
 	```	
+- il est fortement recommandé d'utiliser `EXISTS` à la place de `COUNT` lorsque l'on veut savoir si des éléments sont présents ou non. C'est beaucoup plus [performant](https://blog.jooq.org/2016/09/14/avoid-using-count-in-sql-when-you-could-use-exists/)
 
-### Postgre SQL
+### Postgre) SQL
 
 #### Dump 
 
