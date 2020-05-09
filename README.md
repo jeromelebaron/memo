@@ -30,6 +30,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 #### Liens utiles
 
 - [Design patterns](http://java-design-patterns.com/)
+- [Cours](https://www.youtube.com/channel/UCIatmtIm9z5YEWuHbrUMLsw/featured)
 
 #### Lambda
 
@@ -209,7 +210,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 - [ressource](https://dzone.com/articles/frequently-used-annotations-in-spring-boot-applica)
 
-## Git)
+## Git
 
 Il ne faut pas oublier que tout ce qui a été commité dans git peut être retrouvé. Dans le doute, plutôt que de revenir à un fichier sur lequel on aurait fait une erreur, il vaut mieux créer une branche locale avec le fichier en question et faire un commit. Comme ça on pourra toujours retrouver la modification.
 
@@ -300,7 +301,7 @@ Voici les différentes commandes utiles
 
 - [explication visuelle des principales commandes](https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1)
 
-## Apache)
+## Apache
 
 - configuration Apache 2.4 pour ajouter un virtual host :
 
@@ -558,6 +559,7 @@ AND r.type = 'NAF';
 
 - pour ajouter un nouvel utilisateur en tant que sudoer `sudo adduser <username> sudo` ou modifier le fichier `/etc/sudoer` en ajoutant une ligne `user ALL=(ALL) ALL`
 - pour savoir ou on se trouve : `pwd`
+- [manipulation de texte](https://blog.balthazar-rouberol.com/text-processing-in-the-shell)
 
 ### Configuration OSX
 
@@ -600,3 +602,4 @@ table.table {
 ## Tools
 
 - [diagramme](https://app.diagrams.net/)
+- [cheatsheets](https://devhints.io/)
