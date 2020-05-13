@@ -333,6 +333,10 @@ Voici les différentes commandes utiles
 
 ## Architecture
 
+### REST
+
+- [différence entre PUT et POST](https://blog.engineering.publicissapient.fr/2014/03/17/post-vs-put-la-confusion/)
+
 ## Déploiement
 
 - Outil pour déployer son environnement local sur une url publique [Blog netapsys](https://blog.netapsys.fr/exposer-son-environnement-local-rapidement-avec-ngrok/)
