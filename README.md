@@ -12,6 +12,7 @@
 - [Docker](#Docker)
 - [JavaScript](#JavaScript)
 - [Bash](#Bash)
+- [Sécurité](#Securite)
 
 ## Java
 
@@ -169,6 +170,7 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 - si une erreur de ce type se présente `Caused by: org.hibernate.PersistentObjectException: detached entity passed to persist` c'est qu'un objet (lié le plus souvent) que l'on essaye de persister en cascade n'est pas attaché à la session hibernate. Pour palier au problème, il faut d'abord récupérer cet objet via hibernate et le problème devrait disparaitre. 
 - attention lorsqu'on passe une liste pour un paramètre de type IN écrite en HQL, si la liste est vide alors cela va créer une erreur de syntaxe à cause de la parenthèse. Pour pallier le problème, il faut ajouter une valeur dans la liste.
 - si une erreur de ce type se présente `illegal attempt to dereference collection` c'est qu'une collection présente dans la requête n'est pas peuplée. Il faut utiliser `JOIN FETCH` sur la collection pour contouner le problème.
+- [performance tips](https://dzone.com/articles/50-best-performance-practices-for-hibernate-5-amp)
 
 ### Spring
 
@@ -611,3 +613,7 @@ table.table {
 
 - [diagramme](https://app.diagrams.net/)
 - [cheatsheets](https://devhints.io/)
+
+## Securite
+
+- une bonne pratique est d'ajouter un fichier `security.txt` à la racine d'un site avec différentes informations [lien](https://securitytxt.org)
