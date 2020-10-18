@@ -335,6 +335,10 @@ Voici les différentes commandes utiles
 
 ## Architecture
 
+### Principes
+
+- [Architecture hexagonale](https://blog.octo.com/architecture-hexagonale-trois-principes-et-un-exemple-dimplementation/)
+
 ### REST
 
 - [différence entre PUT et POST](https://blog.engineering.publicissapient.fr/2014/03/17/post-vs-put-la-confusion/)
