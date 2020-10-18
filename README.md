@@ -524,6 +524,8 @@ AND r.type = 'NAF';
 	```javascript
 	const id = +this.route.snapshot.paramMap.get('id');
 	``` 
+- un plugin très utile pour le développement sur Chrome est Augury
+- [faciliter le déploiement](https://blog.octo.com/compiler-un-front-angular-variabilise-comme-un-chef/)
 
 ### NodeJs
 
