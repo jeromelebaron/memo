@@ -367,6 +367,7 @@ Voici les différentes commandes utiles
 	WHERE table2.ID = 7;
 	```	
 - il est fortement recommandé d'utiliser `EXISTS` à la place de `COUNT` lorsque l'on veut savoir si des éléments sont présents ou non. C'est beaucoup plus [performant](https://blog.jooq.org/2016/09/14/avoid-using-count-in-sql-when-you-could-use-exists/)
+- [connaissances sur les bases de données](https://rakyll.medium.com/things-i-wished-more-developers-knew-about-databases-2d0178464f78)
 
 ### Postgre) SQL
 
