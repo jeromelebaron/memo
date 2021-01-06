@@ -212,6 +212,12 @@ alias j7="export JAVA_HOME=`/usr/libexec/java_home -v 1.7`; java -version"
 
 - [ressource](https://dzone.com/articles/frequently-used-annotations-in-spring-boot-applica)
 
+### Lombok
+
+Bien que ce soit un outil que je n'apprécie guère, voici quelques astuces :
+
+- `@Builder.Default` permet de définir une valeur par défaut pour un champ
+
 ## Git
 
 Il ne faut pas oublier que tout ce qui a été commité dans git peut être retrouvé. Dans le doute, plutôt que de revenir à un fichier sur lequel on aurait fait une erreur, il vaut mieux créer une branche locale avec le fichier en question et faire un commit. Comme ça on pourra toujours retrouver la modification.
@@ -369,7 +375,7 @@ Voici les différentes commandes utiles
 - il est fortement recommandé d'utiliser `EXISTS` à la place de `COUNT` lorsque l'on veut savoir si des éléments sont présents ou non. C'est beaucoup plus [performant](https://blog.jooq.org/2016/09/14/avoid-using-count-in-sql-when-you-could-use-exists/)
 - [connaissances sur les bases de données](https://rakyll.medium.com/things-i-wished-more-developers-knew-about-databases-2d0178464f78)
 
-### Postgre) SQL
+### Postgre SQL
 
 #### Dump 
 
@@ -621,6 +627,6 @@ table.table {
 - [diagramme](https://app.diagrams.net/)
 - [cheatsheets](https://devhints.io/)
 
-## Securite
+## Sécurité
 
 - une bonne pratique est d'ajouter un fichier `security.txt` à la racine d'un site avec différentes informations [lien](https://securitytxt.org)
